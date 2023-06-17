@@ -1,0 +1,35 @@
+.App {
+  
+    background: #ECD9EA;
+    height: 100%;
+    padding-left: .8%;
+    align-items: center;
+    justify-content: center;
+    margin-top: 90px;
+}
+
+.Glass {
+  display: grid;
+  height: 98vh;
+  max-width: 99%; 
+  background: #ffffff8a;
+  border-radius: 2rem;
+  overflow: hidden;
+  align-content: stretch;
+  justify-content: space-around;
+  justify-items: center;
+}
+
+@media screen and (max-width: 1200px) {
+  .Glass {
+    grid-template-columns:none; /* Update grid-template-columns values */
+    overflow-y: scroll;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .Glass {
+    grid-template-columns:none; /* Adjust the grid-template-columns for small screens */
+  }
+}

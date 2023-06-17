@@ -1,0 +1,45 @@
+
+.dash-container {
+    padding: 20px;
+    position: relative; 
+  }
+  
+  .table-container {
+    margin-top: 10px; 
+  }
+  
+  .table-container table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 5px solid rgb(195, 120, 230);
+    border-radius: 50px;
+  }
+  
+  .table-container th,
+  .table-container td {
+    padding: 15px;
+    border-right: 3px solid rgb(185, 104, 211); /* Add border between columns */
+    border-bottom: 4px solid #f6a5e6; 
+  }
+  
+  .table-container th:last-child,
+  .table-container td:last-child {
+    border-right: none; /* Remove border for the last column */
+  }
+  
+  .table-container tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .table-container th.id-column {
+    color: blue; 
+    font-weight: bold;
+
+  }
+  
+  .table-container th.title-column {
+    color: green;
+    font-weight: bold;
+
+  }
+  
