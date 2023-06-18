@@ -8,25 +8,58 @@ const SignUp = () => {
   const [email, setEmail] = useState("");
   const [education, setEducation] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [termsChecked, setTermsChecked] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (!termsChecked) {
-      console.log("Please agree to the terms and conditions.");
+      alert("Please agree to the terms and conditions.");
       return;
     }
 
-    // Perform sign-up logic here
-    console.log("Sign-up form submitted");
-    console.log("Name:", name);
-    console.log("Place:", place);
-    console.log("Age:", age);
-    console.log("Email:", email);
-    console.log("Education:", education);
-    console.log("Phone Number:", phoneNumber);
-    console.log("Terms Checked:", termsChecked);
+    if (password !== confirmPassword) {
+      alert("Password and confirm password do not match.");
+      return;
+    }
+
+    // Prepare the profile data
+    const profileData = {
+      name,
+      place,
+      age,
+      email,
+      education,
+      phoneNumber,
+      password,
+    };
+
+    // Make the createProfile API call here
+    createProfile(profileData);
+  };
+
+  const createProfile = (profileData) => {
+    // Replace this with the actual createProfile API call
+    // Example asynchronous API call using fetch:
+    fetch("http://localhost:8080/api/v1/createProfile", {
+      method: "POST",
+      body: JSON.stringify(profileData),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          alert("Sign-up successful");
+        } else {
+          alert("Sign-up failed");
+        }
+      })
+      .catch((error) => {
+        console.error("Error creating profile:", error);
+      });
   };
 
   return (
@@ -75,6 +108,20 @@ const SignUp = () => {
             placeholder="Phone Number"
             value={phoneNumber}
             onChange={(e) => setPhoneNumber(e.target.value)}
+          />
+          <input
+            className="login-input"
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <input
+            className="login-input"
+            type="password"
+            placeholder="Confirm Password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
           />
           <div className="signup-checkbox-container">
             <input

@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
 
 const Login = () => {
+  const navigate = useNavigate(); // Access the navigate function
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -13,7 +14,7 @@ const Login = () => {
     setError(""); // Reset error message
 
     try {
-      const response = await axios.post("/api/login", {
+      const response = await axios.get("http://localhost:8080/api/v1/getProfiles", {
         email,
         password,
       });
@@ -22,8 +23,8 @@ const Login = () => {
       console.log("Login successful");
       console.log("User data:", response.data);
 
-      // Navigate to the home page
-      // window.location = "/home";
+      // Redirect to "/home" without reloading the page
+      navigate("/home");
     } catch (error) {
       // Handle error
       console.log("Login failed");
@@ -58,7 +59,7 @@ const Login = () => {
           </button>
           {error && <p className="login-error">{error}</p>}
           <p className="login-signup">
-            Don't have an account? <Link to="/s">Sign Up</Link>
+            Don't have an account? <Link to="/signup">Sign Up</Link>
           </p>
         </form>
       </div>
