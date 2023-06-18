@@ -36,11 +36,6 @@
     cursor: pointer;
   }
   
-  .login-forgot-password {
-    margin-top: 10px;
-    color: #472d86;
-  }
-  
   .login-signup {
     margin-top: 10px;
     color: #472d86;
@@ -70,5 +65,8 @@
       font-size: small;
     }
     
+.login-error {
+  color: red;
+}
     
   
