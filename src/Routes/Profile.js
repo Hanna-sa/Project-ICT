@@ -4,11 +4,11 @@ import Navbar from "../components/Navbar";
 
 
 const Profile = () => {
-  const [name, setName] = useState("John Doe");
-  const [place, setPlace] = useState("New York");
-  const [age, setAge] = useState(25);
-  const [education, setEducation] = useState("Bachelor's Degree");
-  const [contactDetails, setContactDetails] = useState("123-456-7890");
+  const [name, setName] = useState("Gouri");
+  const [place, setPlace] = useState("Vazhakulam");
+  const [age, setAge] = useState(20);
+  const [education, setEducation] = useState("BTech");
+  const [contactDetails, setContactDetails] = useState("7025325185");
   const [isEditing, setIsEditing] = useState(false);
 
   const handleEditClick = () => {
