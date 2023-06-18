@@ -10,7 +10,7 @@ const OpeningPage = () => {
         <Link className="link" to="/login">
           Login
         </Link>
-        <Link className="link" to="/signup">
+        <Link className="link" to="/s">
           Signup
         </Link>
       </div>
