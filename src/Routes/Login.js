@@ -4,14 +4,14 @@ import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
 
 const Login = () => {
-  const navigate = useNavigate(); // Access the navigate function
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError(""); // Reset error message
+    setError("");
 
     try {
       const response = await axios.get("http://localhost:8080/api/v1/getProfiles", {
@@ -19,16 +19,32 @@ const Login = () => {
         password,
       });
 
-      // Assuming login is successful
-      console.log("Login successful");
-      console.log("User data:", response.data);
+      // Assuming login is unsuccessful by default
+      let loginSuccessful = false;
+  let arr = Object.values(response.data);
+  console.log(arr)
 
-      // Redirect to "/home" without reloading the page
-      navigate("/home");
+      // Iterate over the response array and check for a match
+      arr[1].forEach((profile) => {
+        console.log("Here")
+        if (profile.email === email && profile.password === password) {
+          loginSuccessful = true;
+          console.log("Login successful");
+          console.log("User data:", profile);
+        }
+      });
+
+      if (loginSuccessful) {
+        // Redirect to "/home" without reloading the page
+        navigate("/dashboard");
+      } else {
+        console.log("Login failed");
+        setError("Invalid email or password. Please try again.");
+      }
     } catch (error) {
       // Handle error
       console.log("Login failed");
-      console.error(error.response.data);
+      console.error("ERROR IN LOGIN");
       setError("Invalid email or password. Please try again.");
     }
   };
