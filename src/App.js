@@ -7,6 +7,7 @@ import Dash from "./Routes/Dash";
 import Signup from "./Routes/Signup";
 import Admin from "./Routes/Admin";
 import OpeningPage from "./Routes/OpeningPage";
+import Dashboard from "./Routes/Dashboard";
 export default function App() {
   return (
     <div className="App">
@@ -18,6 +19,7 @@ export default function App() {
         <Route path="/Home" element={<Home />} />
         <Route path="/Profile" element={<Profile />} />
         <Route path="/Admin" element={<Admin />} />
+        <Route path="/Dashboard" element={<Dashboard />} />
       </Routes>
     </div>
   );
